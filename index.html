@@ -86,21 +86,27 @@ color:white;
 		<title>QQTV Adventure</title>
 	</head>
 	<body>
-		<h1>
-		SICK GAME!
-		</h1>
+		<h1>SICK GAME!</h1>
 		<div id="div1">
-
+			<h2 id="narrator">Character Select - Choose your destiny!</h2>
 		</div>
 	</body>
 </html>
 <script type="text/javascript">
+createWeapons();
+createCharacters();
+var characters = [];
+characters.push(scumbagSam, ballsDeepBilly, joblessJosh, mastMat, dickheadDave, dbagDean, borinellJon);
 
+for (var i=0; i < characters.length; i++) {
+	createButton(characters[i]);
+	//console.log(characters[i]);
+}
 
 function Weapon(name, damage, durability) {
-		this.name = name;
-		this.damage = damage;
-		this.durability = durability;
+	this.name = name;
+	this.damage = damage;
+	this.durability = durability;
 };
 
 function Character(name, health, armour, baseDmg, specAtt, weapon) {
@@ -128,16 +134,6 @@ function createCharacters() {
 	borinellJon = new Character("Borin' 'ell Jon", 70, 3, 4, "Hits from the bong", bong);
 }
 
-createWeapons();
-createCharacters();
-var characters = [];
-characters.push(scumbagSam, ballsDeepBilly, joblessJosh, mastMat, dickheadDave, dbagDean, borinellJon);
-
-for (var i=0; i < characters.length; i++) {
-	createButton(characters[i]);
-	//console.log(characters[i]);
-}
-
 function remAttr(parent, child) {
 	var d = document.getElementById(parent);
 	var element = d.getElementsByTagName(child);
@@ -157,15 +153,15 @@ function createElement(parent, child, label, eleText) {
 
 function createButton(msg) {
 	charName = msg.name;
-	var buttonnode= document.createElement('input');
-	buttonnode.setAttribute('type','button');
-	buttonnode.setAttribute('name',charName);
-	buttonnode.setAttribute('value',charName);
-	buttonnode.setAttribute('id',msg.name);
-	buttonnode.setAttribute('class', 'charSelect');
-	buttonnode.setAttribute('onclick', "chosen(this.id)");
+	var okbutton= document.createElement('input');
+	okbutton.setAttribute('type','button');
+	okbutton.setAttribute('name',charName);
+	okbutton.setAttribute('value',charName);
+	okbutton.setAttribute('id',msg.name);
+	okbutton.setAttribute('class', 'charSelect');
+	okbutton.setAttribute('onclick', "chosen(this.id)");
 	var element=document.getElementById("div1");
-	element.appendChild(buttonnode);
+	element.appendChild(okbutton);
 	
 };
 
@@ -185,16 +181,9 @@ function displayDetails(profile) {
 
 }
 
-function chosen(choice) {
-	//document.getElementsByTagName('input').setAttribute('class', 'charSelect');
-	var unselected = document.getElementsByTagName('input');
-
-	for(var i = 0; i < unselected.length; i++) {
-		unselected[i].setAttribute('class', 'charSelect');
-	}
-	document.getElementById(choice).setAttribute('class', 'chosen');
+function textToObj(textToChange) {
 	
-	switch (choice) {
+	switch (textToChange) {
 		case 'jobless josh':
 			chosenChar = joblessJosh;
 			break;
@@ -219,13 +208,41 @@ function chosen(choice) {
 		default:
 			chosenChar = joblessJosh;
 	}
-	
-	remAttr('div2', 'p');
+	return chosenChar;
+}
+
+function chosen(choice) {
+	//document.getElementsByTagName('input').setAttribute('class', 'charSelect');
+	var unselected = document.getElementsByTagName('input');
+
+	for(var i = 0; i < unselected.length; i++) {
+		unselected[i].setAttribute('class', 'charSelect');
+	}
+	document.getElementById(choice).setAttribute('class', 'chosen');
+	var chosenChar = textToObj(choice);
+	//remAttr('div1', 'input');
+	remAttr('div2','p');
 	displayDetails(chosenChar);
-
-
-	
+	remAttr('div2','input');
+	//startGame(chosenChar);
+	var okbutton= document.createElement('input');
+	okbutton.setAttribute('type','button');
+	okbutton.setAttribute('name',chosenChar.name);
+	okbutton.setAttribute('value','Start Game!');
+	okbutton.setAttribute('id','start');
+	okbutton.setAttribute('class', 'chosen');
+	okbutton.setAttribute('onclick', "startGame(this.name)");
+	var element=document.getElementById("div2");
+	element.appendChild(okbutton);
 	
 };
+function startGame(character) {
+remAttr('div1', 'input');
+remAttr('div2', 'p');
+remAttr('div2','input');
+var characterChosen = textToObj(character);
+document.getElementById('narrator').innerText = 'You have Chosen ' + characterChosen.name + '!';
+
+}
 
 </script>
