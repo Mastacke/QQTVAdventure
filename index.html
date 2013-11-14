@@ -1,79 +1,225 @@
-<!DOCTYPE html>
+
+<style>
+h1, p, body, input {
+font-family:Trebuchet, Serif;
+}
+
+h2 {
+margin:0 auto;
+text-align:center;
+height:auto;
+width:auto;
+padding:1em;
+}
+
+input {
+margin:0 auto;
+}
+
+h1 {
+margin:0 auto;
+color:white;
+padding:1em;
+text-align:center;
+}
+
+body {
+clear:both;
+background-color:#333;
+}
+
+#div1 {
+height:60%;
+width:80%;
+padding:2em;
+margin:0 auto;
+background-color:#444;
+border-radius:5px;
+}
+
+.thechosenone {
+font-size: 18pt;
+text-align:center;
+color:white;
+}
+
+
+.charSelect {
+background-color:#c0362c;
+border-radius:5px;
+width:13%;
+height:2em;
+margin:0.5em;
+color:white;
+}
+
+
+
+
+.chosen {
+background: #006e2e; /* Old browsers */
+background: -moz-linear-gradient(left,  #006e2e 0%, #006e2e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#006e2e), color-stop(100%,#006e2e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* IE10+ */
+background: linear-gradient(to right,  #006e2e 0%,#006e2e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006e2e', endColorstr='#006e2e',GradientType=1 ); /* IE6-9 */
+
+border-radius: 5px; 
+color:black;
+width:12%;
+height:2em;
+margin:0.5em;
+font-weight:bold;
+}
+
+#div2 {
+margin:0 auto;
+height:75%;
+width:66%;
+text-align:left;
+color:white;
+}
+</style>
 <html>
+	<head>
+		<title>QQTV Adventure</title>
+	</head>
+	<body>
+		<h1>
+		SICK GAME!
+		</h1>
+		<div id="div1">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Qqtvadventure : QQTV Adventure Game" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Qqtvadventure</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Mastacke/QQTVAdventure">View on GitHub</a>
-
-          <h1 id="project_title">Qqtvadventure</h1>
-          <h2 id="project_tagline">QQTV Adventure Game</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Mastacke/QQTVAdventure/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Mastacke/QQTVAdventure/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Qqtvadventure maintained by <a href="https://github.com/Mastacke">Mastacke</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+		</div>
+	</body>
 </html>
+<script type="text/javascript">
+
+
+function Weapon(name, damage, durability) {
+		this.name = name;
+		this.damage = damage;
+		this.durability = durability;
+};
+
+function Character(name, health, armour, baseDmg, specAtt, weapon) {
+	this.type = "human";
+	this.name = name;
+	this.health = health;
+	this.armour = armour;
+	this.ability = specAtt;
+	this.baseDamage = baseDmg;
+	this.weapon = weapon;
+}
+
+function createWeapons() {
+	ibm = new Weapon("IBM Mechanical Keyboard", 11, 10);
+	bong = new Weapon("Giant Bong", 1000, 1);
+}
+
+function createCharacters() {
+	joblessJosh = new Character("Jobless Josh", 120, 5, 7, "Superior Intellect", ibm);
+	ballsDeepBilly = new Character("Balls-deep Billy", 150, 7, 5, " ", ibm);
+	scumbagSam = new Character("Scumbag Sam", 150, 7, 5, " ", ibm);
+	mastMat = new Character("Master-baiter Mat", 100, 4, 9, "", ibm);
+	dickheadDave = new Character("Dickhead Dave", 130, 6, 7, "", ibm);
+	dbagDean = new Character("Dbag Dean", 140, 6, 6, " ", ibm);
+	borinellJon = new Character("Borin' 'ell Jon", 70, 3, 4, "Hits from the bong", bong);
+}
+
+createWeapons();
+createCharacters();
+var characters = [];
+characters.push(scumbagSam, ballsDeepBilly, joblessJosh, mastMat, dickheadDave, dbagDean, borinellJon);
+
+for (var i=0; i < characters.length; i++) {
+	createButton(characters[i]);
+	//console.log(characters[i]);
+}
+
+function remAttr(parent, child) {
+	var d = document.getElementById(parent);
+	var element = d.getElementsByTagName(child);
+	for (i = element.length - 1; i >= 0; i--) {
+		element[i].parentNode.removeChild(element[i]);
+	}
+}
+
+function createElement(parent, child, label, eleText) {
+	var d = document.getElementById(parent);
+	var para = document.createElement(child);
+	//para.setAttribute('class','thechosenone');
+	var text = document.createTextNode(label + " " + eleText);
+	para.appendChild(text);
+	d.appendChild(para);
+}
+
+function createButton(msg) {
+	charName = msg.name;
+	var buttonnode= document.createElement('input');
+	buttonnode.setAttribute('type','button');
+	buttonnode.setAttribute('name',charName);
+	buttonnode.setAttribute('value',charName);
+	buttonnode.setAttribute('id',msg.name);
+	buttonnode.setAttribute('class', 'charSelect');
+	buttonnode.setAttribute('onclick', "chosen(this.id)");
+	var element=document.getElementById("div1");
+	element.appendChild(buttonnode);
+	
+};
+function chosen(choice) {
+	//document.getElementsByTagName('input').setAttribute('class', 'charSelect');
+	var unselected = document.getElementsByTagName('input');
+
+	for(var i = 0; i < unselected.length; i++) {
+		unselected[i].setAttribute('class', 'charSelect');
+	}
+	document.getElementById(choice).setAttribute('class', 'chosen');
+	
+	switch (choice) {
+		case 'jobless josh':
+			chosenChar = joblessJosh;
+			break;
+		case 'Master-baiter Mat':
+			chosenChar = mastMat;
+			break;
+		case 'Dickhead Dave':
+			chosenChar = dickheadDave;
+			break;
+		case 'Dbag Dean':
+			chosenChar = dbagDean;
+			break;
+		case "Borin' 'ell Jon":
+			chosenChar = borinellJon;
+			break;
+		case 'Scumbag Sam':
+			chosenChar = scumbagSam;
+			break;
+		case 'Balls-deep Billy':
+			chosenChar = ballsDeepBilly;
+			break;
+		default:
+			chosenChar = joblessJosh;
+	}
+	
+	var d = document.getElementById('div1');
+	var para = document.createElement('div');
+	para.setAttribute('id', 'div2');
+	d.appendChild(para);
+	
+	totalDamage = chosenChar.baseDamage + chosenChar.weapon.damage;
+	remAttr('div2', 'p');
+	createElement('div2', 'p', "Name: ", chosenChar.name);
+	createElement('div2', 'p', "HP: ", chosenChar.health);
+	createElement('div2', 'p', "Weapon of choice: ", chosenChar.weapon.name);
+	createElement('div2', 'p', "Base Damage: ", chosenChar.baseDamage);
+	createElement('div2', 'p', "Armour: ", chosenChar.armour);
+	createElement('div2', 'p', "Total Damage: ", totalDamage);
+
+	
+	
+};
+
+</script>
