@@ -1,3 +1,4 @@
+
 <style>
 h1, p, body, input {
 font-family:Trebuchet, Serif;
@@ -167,12 +168,12 @@ function createButton(msg) {
 	element.appendChild(buttonnode);
 	
 };
-	var d = document.getElementById('div1');
-	var para = document.createElement('div');
-	para.setAttribute('id', 'div2');
-	d.appendChild(para);
-	
-	
+
+var d = document.getElementById('div1');
+var para = document.createElement('div');
+para.setAttribute('id', 'div2');
+d.appendChild(para);
+
 function chosen(choice) {
 	//document.getElementsByTagName('input').setAttribute('class', 'charSelect');
 	var unselected = document.getElementsByTagName('input');
@@ -209,6 +210,7 @@ function chosen(choice) {
 	}
 	
 
+	
 	totalDamage = chosenChar.baseDamage + chosenChar.weapon.damage;
 	remAttr('div2', 'p');
 	createElement('div2', 'p', "Name: ", chosenChar.name);
