@@ -174,6 +174,17 @@ var para = document.createElement('div');
 para.setAttribute('id', 'div2');
 d.appendChild(para);
 
+function displayDetails(profile) {
+	totalDamage = profile.baseDamage + profile.weapon.damage;
+	createElement('div2', 'p', "Name: ", profile.name);
+	createElement('div2', 'p', "HP: ", profile.health);
+	createElement('div2', 'p', "Weapon of choice: ", profile.weapon.name);
+	createElement('div2', 'p', "Base Damage: ", profile.baseDamage);
+	createElement('div2', 'p', "Armour: ", profile.armour);
+	createElement('div2', 'p', "Total Damage: ", totalDamage);
+
+}
+
 function chosen(choice) {
 	//document.getElementsByTagName('input').setAttribute('class', 'charSelect');
 	var unselected = document.getElementsByTagName('input');
@@ -209,16 +220,9 @@ function chosen(choice) {
 			chosenChar = joblessJosh;
 	}
 	
-
-	
-	totalDamage = chosenChar.baseDamage + chosenChar.weapon.damage;
 	remAttr('div2', 'p');
-	createElement('div2', 'p', "Name: ", chosenChar.name);
-	createElement('div2', 'p', "HP: ", chosenChar.health);
-	createElement('div2', 'p', "Weapon of choice: ", chosenChar.weapon.name);
-	createElement('div2', 'p', "Base Damage: ", chosenChar.baseDamage);
-	createElement('div2', 'p', "Armour: ", chosenChar.armour);
-	createElement('div2', 'p', "Total Damage: ", totalDamage);
+	displayDetails(chosenChar);
+
 
 	
 	
