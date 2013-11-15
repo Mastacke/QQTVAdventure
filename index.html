@@ -157,17 +157,17 @@ function createWeapons() {
 };
 
 function createCharacters() {
-	joblessJosh = new Character("Jobless Josh", 120, 5, 7, "Superior Intellect", ibm);
-	ballsDeepBilly = new Character("Balls-deep Billy", 150, 7, 5, " ", ibm);
-	scumbagSam = new Character("Scumbag Sam", 150, 7, 5, " ", ibm);
-	mastMat = new Character("Master-baiter Mat", 100, 4, 9, "", ibm);
-	dickheadDave = new Character("Dickhead Dave", 130, 6, 7, "", ibm);
-	dbagDean = new Character("Dbag Dean", 140, 6, 6, " ", ibm);
-	borinellJon = new Character("Borin' 'ell Jon", 70, 3, 4, "Hits from the bong", bong);
+	joblessJosh = new Character("Jobless Josh", 240, 5, 7, "Superior Intellect", ibm);
+	ballsDeepBilly = new Character("Balls-deep Billy", 300, 7, 5, " ", ibm);
+	scumbagSam = new Character("Scumbag Sam", 300, 7, 5, " ", ibm);
+	mastMat = new Character("Master-baiter Mat", 200, 4, 9, "", ibm);
+	dickheadDave = new Character("Dickhead Dave", 260, 6, 7, "", ibm);
+	dbagDean = new Character("Dbag Dean", 280, 6, 6, " ", ibm);
+	borinellJon = new Character("Borin' 'ell Jon", 150, 3, 4, "Hits from the bong", bong);
 };
 
 function createEnemies () {
-	goblin = new Enemy("goblin", "Jewbag Jones", 10, 1, 2, "life steal", smallStick, "you win", "I win");
+	goblin = new Enemy("goblin", "Jewbag Jones", 500, 1, 2, "life steal", smallStick, "you win", "I win");
 	//enemyArray = new Array(goblin);
 }
 
@@ -282,16 +282,16 @@ var damage = Math.round(((Math.random() * 10) * enemyToFight.baseDamage) + ((Mat
 damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamage));
 
 console.log(damage);
-	if(Math.random() > 0.8) {
-		if(Math.random() > 0.95) {
+	if(Math.random() > 0.94) {
+		if(Math.random() > 0.98) {
 			damage = Math.round(characterChosen.baseDamage * 7.5);
 			var message = enemyToFight.name + " defies the odds and hits a MEGA SICK CRIT, damaging you for " + damage;
 		} else {
 			damage = Math.round(characterChosen.baseDamage * 5);
 			var message = enemyToFight.name +  " hits a sick crit and damages you for " + damage;
 		}
-	} else if (Math.random() < 0.3) {
-		if(Math.random() < 0.1) {
+	} else if (Math.random() < 0.1) {
+		if(Math.random() < 0.05) {
 			damage = - 4;
 			var message = enemyToFight.name +  " is drunk and offers you some tasty treats, healing you slightly for " + (damage - (damage * 2));
 		} else {
