@@ -283,8 +283,8 @@ damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamag
 		}
 	} else if (Math.random() < 0.4) {
 		if(Math.random() < 0.2) {
-			damage = Math.round(damage/2);
-			var message = enemyToFight.name +  " is drunk and hits himself..somehow, for " + damage;
+			damage = - 4;
+			var message = enemyToFight.name +  " is drunk and offers you food, healing you slightly " + damage;
 		} else {
 			damage = 0;
 			var message = enemyToFight.name +  " flops and hits " + damage;
