@@ -2,6 +2,7 @@
 <style>
 h1, p, body, input {
 font-family:Trebuchet, Serif;
+overflow:hiddne;
 }
 
 h2 {
@@ -29,12 +30,14 @@ background-color:#333;
 }
 
 #div1 {
-height:60%;
-width:80%;
+height:70%;
+width:85%;
 padding:2em;
 margin:0 auto;
 background-color:#444;
 border-radius:5px;
+overflow:hidden;
+clear:both;
 }
 
 .thechosenone {
@@ -45,40 +48,46 @@ color:white;
 
 
 .charSelect {
-background-color:#c0362c;
-border-radius:5px;
+background-color:#555;
+border-radius:3px;
 width:13%;
-height:2em;
+height:3em;
 margin:0.5em;
 color:white;
+}
+
+.charSelect hover {
+background-color:#999;
 }
 
 
 
 
 .chosen {
-background: #006e2e; /* Old browsers */
-background: -moz-linear-gradient(left,  #006e2e 0%, #006e2e 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#006e2e), color-stop(100%,#006e2e)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  #006e2e 0%,#006e2e 100%); /* IE10+ */
-background: linear-gradient(to right,  #006e2e 0%,#006e2e 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006e2e', endColorstr='#006e2e',GradientType=1 ); /* IE6-9 */
-
+background-color:#999;
 border-radius: 5px; 
 color:black;
 width:12%;
-height:2em;
+height:3em;
 margin:0.5em;
 font-weight:bold;
 }
 
+#div2 p {
+
+display:block;
+maring:0.2em;
+padding:0.1em;
+font-size:12pt;
+}
+
 #div2 {
 margin:0 auto;
-width:66%;
+width:50%;
 text-align:left;
 color:white;
+min-height:40% auto;
+overflow:hidden;
 }
 </style>
 <html>
@@ -95,19 +104,20 @@ color:white;
 <script type="text/javascript">
 createWeapons();
 createCharacters();
+createEnemies();
 var characters = [];
 characters.push(scumbagSam, ballsDeepBilly, joblessJosh, mastMat, dickheadDave, dbagDean, borinellJon);
 
 for (var i=0; i < characters.length; i++) {
 	createButton(characters[i]);
 	//console.log(characters[i]);
-}
+};
 
 function Weapon(name, damage, durability) {
 	this.name = name;
 	this.damage = damage;
 	this.durability = durability;
-};
+}
 
 function Character(name, health, armour, baseDmg, specAtt, weapon) {
 	this.type = "human";
@@ -119,10 +129,25 @@ function Character(name, health, armour, baseDmg, specAtt, weapon) {
 	this.weapon = weapon;
 }
 
+function Enemy (type, name, health, armour, baseDmg, specAtt, weapon, deathPhrase, winPhrase) {
+	this.deathPhrase = deathPhrase;
+	this.winPhrase = winPhrase;
+	this.type = type;
+	this.name = name;
+	this.health = health;
+	this.armour = armour;
+	this.ability = specAtt;
+	this.baseDamage = baseDmg;
+	this.weapon = weapon;
+}
+
+
+
 function createWeapons() {
 	ibm = new Weapon("IBM Mechanical Keyboard", 11, 10);
 	bong = new Weapon("Giant Bong", 1000, 1);
-}
+	smallStick = new Weapon("Small Stick", 1, 10);
+};
 
 function createCharacters() {
 	joblessJosh = new Character("Jobless Josh", 120, 5, 7, "Superior Intellect", ibm);
@@ -132,6 +157,11 @@ function createCharacters() {
 	dickheadDave = new Character("Dickhead Dave", 130, 6, 7, "", ibm);
 	dbagDean = new Character("Dbag Dean", 140, 6, 6, " ", ibm);
 	borinellJon = new Character("Borin' 'ell Jon", 70, 3, 4, "Hits from the bong", bong);
+};
+
+function createEnemies () {
+	goblin = new Enemy("goblin", "Jewbag Jones", 10, 1, 2, "life steal", smallStick, "you win", "I win");
+	//enemyArray = new Array(goblin);
 }
 
 function remAttr(parent, child) {
@@ -140,7 +170,7 @@ function remAttr(parent, child) {
 	for (i = element.length - 1; i >= 0; i--) {
 		element[i].parentNode.removeChild(element[i]);
 	}
-}
+};
 
 function createElement(parent, child, label, eleText) {
 	var d = document.getElementById(parent);
@@ -149,7 +179,7 @@ function createElement(parent, child, label, eleText) {
 	var text = document.createTextNode(label + " " + eleText);
 	para.appendChild(text);
 	d.appendChild(para);
-}
+};
 
 function createButton(msg) {
 	charName = msg.name;
@@ -230,18 +260,62 @@ function chosen(choice) {
 	okbutton.setAttribute('name',chosenChar.name);
 	okbutton.setAttribute('value','Start Game!');
 	okbutton.setAttribute('id','start');
-	okbutton.setAttribute('class', 'chosen');
+	okbutton.setAttribute('class', 'charSelect');
 	okbutton.setAttribute('onclick', "startGame(this.name)");
 	var element=document.getElementById("div2");
+	okbutton.style.styleFloat = 'right';
+	okbutton.style.cssFloat = 'right';
 	element.appendChild(okbutton);
 	
 };
+
+function calcDamage(enemyToFight, characterChosen) {
+damage = enemyToFight.baseDamage + enemyToFight.weapon.damage;
+
+damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamage));
+	if(Math.random() > 0.7) {
+		if(Math.random() > 0.9) {
+			damage = damage * 3;
+			var message = "Goblin defies the odds and hits a mega sick crit,damagin you for" + damage;
+		} else {
+			damage = damage * 1.5;
+			var message = enemyToFight.name +  " hits a sick crit and damages you for " + damage;
+		}
+	} else if (Math.random() < 0.4) {
+		if(Math.random() < 0.2) {
+			damage = Math.round(damage/2);
+			var message = enemyToFight.name +  " is drunk and hits himself..somehow, for " + damage;
+		} else {
+			damage = 0;
+			var message = enemyToFight.name +  " flops and hits " + damage;
+		}
+	} else {
+		var message = enemyToFight.name +  " hits you for " + damage;
+	}
+	characterChosen.health = characterChosen.health - damage;
+	return message;
+}
+
 function startGame(character) {
 remAttr('div1', 'input');
 remAttr('div2', 'p');
 remAttr('div2','input');
-var characterChosen = textToObj(character);
-document.getElementById('narrator').innerText = 'You have Chosen ' + characterChosen.name + '!';
+
+var player = textToObj(character);
+var enemy = goblin;
+
+document.getElementById('narrator').innerText = 'You have Chosen ' + player.name + '!';
+document.getElementById('div1').style.backgroundColor = "white";
+
+
+createElement('div1', 'p', 'The first enemy you will face in this journey is:', enemy.name); 
+//console.log("Health at start: " + player.health);
+var fight = calcDamage(enemy,player);
+//console.log(fight);
+
+
+createElement('div1', 'p', fight,  " "); 
+createElement('div1', 'p', "HP left: ", player.health);
 
 }
 
