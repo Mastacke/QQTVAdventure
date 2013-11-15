@@ -285,7 +285,7 @@ console.log(damage);
 	if(Math.random() > 0.7) {
 		if(Math.random() > 0.9) {
 			damage = damage * 3 + (characterChosen.baseDamage * 3);
-			var message = "Goblin defies the odds and hits a MEGA SICK CRIT, damaging you for " + damage;
+			var message = enemyToFight.name + " defies the odds and hits a MEGA SICK CRIT, damaging you for " + damage;
 		} else {
 			damage = damage * 1.5;
 			var message = enemyToFight.name +  " hits a sick crit and damages you for " + damage;
