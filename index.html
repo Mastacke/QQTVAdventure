@@ -2,7 +2,8 @@
 <style>
 h1, p, body, input {
 font-family:Trebuchet, Serif;
-overflow:hiddne;
+overflow:hidden;
+color:white;
 }
 
 h2 {
@@ -11,6 +12,7 @@ text-align:center;
 height:auto;
 width:auto;
 padding:1em;
+color:white;
 }
 
 input {
@@ -88,6 +90,11 @@ text-align:left;
 color:white;
 min-height:40% auto;
 overflow:hidden;
+background-color:#444;
+}
+
+#narrator {
+color:white;
 }
 </style>
 <html>
@@ -298,6 +305,7 @@ damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamag
 	}
 	createElement('div1', 'p', message,  " "); 
 	createElement('div1', 'p', "HP left: ", characterChosen.health);
+	
 	return characterChosen.health;
 }
 
@@ -310,7 +318,7 @@ var player = textToObj(character);
 var enemy = goblin;
 
 document.getElementById('narrator').innerText = 'You have Chosen ' + player.name + '!';
-document.getElementById('div1').style.backgroundColor = "white";
+//document.getElementById('div1').style.backgroundColor = "white";
 
 
 createElement('div1', 'p', 'The first enemy you will face in this journey is:', enemy.name); 
@@ -323,6 +331,7 @@ while(fight > 0) {
 //console.log(fight);
 if(fight === 0) {
 	//createElement('div1', 'h1', 'GG you lose:', enemy.name + "Wins"); 
+	document.getElementById('narrator').style.color = "red";
 	document.getElementById('narrator').innerText = 'GG you lose. ' + enemy.name + ' wins!';
 }
 
