@@ -30,7 +30,7 @@ background-color:#333;
 }
 
 #div1 {
-height:70%;
+min-height:70% auto;
 width:85%;
 padding:2em;
 margin:0 auto;
@@ -276,7 +276,7 @@ damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamag
 	if(Math.random() > 0.7) {
 		if(Math.random() > 0.9) {
 			damage = damage * 3;
-			var message = "Goblin defies the odds and hits a mega sick crit,damagin you for" + damage;
+			var message = "Goblin defies the odds and hits a mega sick crit, damaging you for " + damage;
 		} else {
 			damage = damage * 1.5;
 			var message = enemyToFight.name +  " hits a sick crit and damages you for " + damage;
@@ -293,7 +293,9 @@ damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamag
 		var message = enemyToFight.name +  " hits you for " + damage;
 	}
 	characterChosen.health = characterChosen.health - damage;
-	return message;
+	createElement('div1', 'p', message,  " "); 
+	createElement('div1', 'p', "HP left: ", characterChosen.health);
+	return characterChosen.health;
 }
 
 function startGame(character) {
@@ -311,11 +313,16 @@ document.getElementById('div1').style.backgroundColor = "white";
 createElement('div1', 'p', 'The first enemy you will face in this journey is:', enemy.name); 
 //console.log("Health at start: " + player.health);
 var fight = calcDamage(enemy,player);
+console.log(fight);
+while(fight > 0) {
+	var fight = calcDamage(enemy,player);
+}
+
 //console.log(fight);
 
 
-createElement('div1', 'p', fight,  " "); 
-createElement('div1', 'p', "HP left: ", player.health);
+
+
 
 }
 
