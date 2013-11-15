@@ -277,29 +277,40 @@ function chosen(choice) {
 };
 
 function calcDamage(enemyToFight, characterChosen) {
-damage = enemyToFight.baseDamage + enemyToFight.weapon.damage;
+var damage = enemyToFight.baseDamage + enemyToFight.weapon.damage;
 
 damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamage));
+var damageBoost = damage * ((Math.random() * enemyToFight.baseDamage)) / (Math.random() * (characterChosen.health / 10));
+while(damageBoost === 0) {
+	damageBoost = damage * ((Math.random() * enemyToFight.baseDamage)) /  (Math.random() * (characterChosen.health / 10));
+}
+console.log(damage);
 	if(Math.random() > 0.7) {
 		if(Math.random() > 0.9) {
-			damage = damage * 3;
+			damage = (damage + damageBoost) * 3;
+			damage = Math.round(damage * 100) / 100;
 			var message = "Goblin defies the odds and hits a mega sick crit, damaging you for " + damage;
 		} else {
-			damage = damage * 1.5;
+			damage = (damage + damageBoost) * 1.5;
+			damage = Math.round(damage * 100) / 100;
 			var message = enemyToFight.name +  " hits a sick crit and damages you for " + damage;
 		}
 	} else if (Math.random() < 0.4) {
 		if(Math.random() < 0.2) {
 			damage = - 4;
-			var message = enemyToFight.name +  " is drunk and offers you food, healing you slightly " + damage;
+			var message = enemyToFight.name +  " is drunk and offers you food, healing you slightly for " + (damage - (damage * 2));
 		} else {
 			damage = 0;
 			var message = enemyToFight.name +  " flops and hits " + damage;
 		}
 	} else {
+		damage = Math.round(damage * 100) / 100;
 		var message = enemyToFight.name +  " hits you for " + damage;
 	}
+	
 	characterChosen.health = characterChosen.health - damage;
+	characterChosenHealth = Math.round(characterChosen.health * 100) / 100;
+
 	if(characterChosen.health < 0) {
 		characterChosen.health = 0;
 	}
