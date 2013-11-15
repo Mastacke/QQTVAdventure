@@ -293,6 +293,9 @@ damage = Math.round(damage - (characterChosen.armour / characterChosen.baseDamag
 		var message = enemyToFight.name +  " hits you for " + damage;
 	}
 	characterChosen.health = characterChosen.health - damage;
+	if(characterChosen.health < 0) {
+		characterChosen.health = 0;
+	}
 	createElement('div1', 'p', message,  " "); 
 	createElement('div1', 'p', "HP left: ", characterChosen.health);
 	return characterChosen.health;
@@ -316,6 +319,11 @@ var fight = calcDamage(enemy,player);
 console.log(fight);
 while(fight > 0) {
 	var fight = calcDamage(enemy,player);
+}
+//console.log(fight);
+if(fight === 0) {
+	//createElement('div1', 'h1', 'GG you lose:', enemy.name + "Wins"); 
+	document.getElementById('narrator').innerText = 'GG you lose. ' + enemy.name + ' wins!';
 }
 
 //console.log(fight);
